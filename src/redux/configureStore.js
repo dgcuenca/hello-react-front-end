@@ -1,14 +1,13 @@
-import { configureStore } from '@reduxjs/toolkit'
-import { apiSlice } from './apis/apiSlice'
+import { configureStore } from '@reduxjs/toolkit';
+import { apiSlice } from './apis/apiSlice';
 
 const setupStore = (preloadedState) => configureStore(
   {
-  reducer: {
-    [apiSlice.reducerPath]: apiSlice.reducer
-  },
-  preloadedState,
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
+    reducer: {
+      [apiSlice.reducerPath]: apiSlice.reducer,
+    },
+    preloadedState,
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware({
       inmutableCheck: false,
       serializableCheck: false,
     }).concat(apiSlice.middleware),
